@@ -17,15 +17,6 @@ use App\Http\Controllers\TransactionController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
-Route::get('/ft', function () {
-    return view('facilitate');
-
-});
-
 Route::resource('facilitate', FacilitateController::class);
 Route::resource('home', HomeController::class);
 Route::resource('location', LocationController::class);

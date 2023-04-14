@@ -10,7 +10,7 @@ class LocationController extends Controller
     {
         // $data = tb_request::orderBy('request_id', 'request_desc');
         // $data2 = tb_sell::orderBy('sell_id', 'sell_desc');
-        return view('location');
+        return view('location.location');
     }
 
 }

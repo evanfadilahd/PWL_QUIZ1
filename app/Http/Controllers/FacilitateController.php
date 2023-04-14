@@ -16,7 +16,7 @@ class FacilitateController extends Controller
     {
         $data = tb_request::orderBy('request_id', 'desc');
         $data2 = tb_sell::orderBy('sell_id', 'desc');
-        return view('facilitate');
+        return view('facilitate.facilitate');
     }
 
     public function create()
@@ -55,7 +55,7 @@ class FacilitateController extends Controller
             'updated_at'=>$request->updated_at,
         ];
         tb_request::create($data);
-        return redirect('facilitate')->with('success','Berhasil menambahkan data');
+        return redirect('facilitate.facilitate')->with('success','Berhasil menambahkan data');
     }
 
 }
