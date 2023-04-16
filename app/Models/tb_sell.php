@@ -12,4 +12,6 @@ class tb_sell extends Model
     protected $table = 'tb_sell';
 
     protected $primarykey = 'sell_id';
+
+    public $timestamps = false;
 }

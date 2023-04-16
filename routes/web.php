@@ -16,7 +16,7 @@ use App\Http\Controllers\TransactionController;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
-
+Route::resource('', HomeController::class);
 Route::resource('facilitate', FacilitateController::class);
 Route::resource('home', HomeController::class);
 Route::resource('location', LocationController::class);

@@ -85,28 +85,29 @@
 
                         <!-- Modal body -->
                         <div class="modal-body">
-                            <form action='{{ url('facilitate') }}'>
+                            <form action='{{ url('facilitate') }}' method='post'>
+                                @csrf
                                 <div class="mb-3 mt-3">
-                                    <label for="s_username" class="form-label">Username:</label>
-                                    <input type="s_username" class="form-control" id="s_username" placeholder="Enter username" name="username">
+                                    <label for="sell_username" class="form-label">Username:</label>
+                                    <input type="text" class="form-control" id="sell_username" placeholder="Enter username" value="{{ Session::get('sell_username') }}" name="sell_username">
                                 </div>
                                 <div class="mb-3">
-                                    <label for="s_goods" class="form-label">Goods:</label>
-                                    <input type="s_goods" class="form-control" id="s_goods" placeholder="Enter goods" name="goods">
+                                    <label for="sell_goods" class="form-label">Goods:</label>
+                                    <input type="text" class="form-control" id="sell_goods" placeholder="Enter goods" value="{{ Session::get('sell_goods') }}" name="sell_goods">
                                 </div>
                                 <div class="mb-3">
-                                    <label for="s_stock" class="form-label">Stock:</label>
-                                    <input type="s_stock" class="form-control" id="s_stock" placeholder="Enter stock" name="stock">
+                                    <label for="sell_stock" class="form-label">Stock:</label>
+                                    <input type="number" class="form-control" id="sell_stock" placeholder="Enter stock" value="{{ Session::get('sell_stock') }}" name="sell_stock">
                                 </div>
                                 <div class="mb-3">
-                                    <label for="s_price" class="form-label">Price:</label>
-                                    <input type="s_price" class="form-control" id="s_price" placeholder="Enter price" name="price">
+                                    <label for="sell_price" class="form-label">Price:</label>
+                                    <input type="number" class="form-control" id="sell_price" placeholder="Enter price" value="{{ Session::get('sell_price') }}" name="sell_price">
                                 </div>
                                 <div class="mb-3">
-                                    <label for="s_description" class="form-label">Description:</label>
-                                    <input type="s_description" class="form-control" id="s_description" placeholder="Enter description" name="description">
+                                    <label for="sell_desc" class="form-label">Description:</label>
+                                    <input type="text" class="form-control" id="sell_desc" placeholder="Enter desc" value="{{ Session::get('sell_desc') }}" name="sell_desc">
                                 </div>
-                                <button type="submit" class="btn btn-primary">Submit</button>
+                                <button type="submit" class="btn btn-primary" id="submit2">Submit</button>
                             </form>
                         </div>
 
@@ -119,6 +120,10 @@
                 </div>
 
         </div>
+    </div>
+
+    <div style="height:160px;"></div>
+
     </div>
 
 @endsection

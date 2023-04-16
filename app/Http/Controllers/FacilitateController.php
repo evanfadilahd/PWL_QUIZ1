@@ -21,7 +21,7 @@ class FacilitateController extends Controller
 
     public function create()
     {
-        return view('tb_request.create');
+            return view('tb_request.create').view('tb_sell.create');
     }
 
     public function store(Request $request)
@@ -29,8 +29,12 @@ class FacilitateController extends Controller
         Session::flash('request_username', $request->request_username);
         Session::flash('request_goods', $request->request_goods);
         Session::flash('request_desc', $request->request_desc);
-        Session::flash('created_at', $request->created_at);
-        Session::flash('updated_at', $request->updated_at);
+
+        Session::flash('sell_username', $request->sell_username);
+        Session::flash('sell_goods', $request->sell_goods);
+        Session::flash('sell_stock', $request->sell_stock);
+        Session::flash('sell_price', $request->sell_price);
+        Session::flash('sell_desc', $request->sell_desc);
         // $request->validate([
         //     'kode_barang'=>'required|unique:goods,kode_barang',
         //     'nama_barang'=>'required',
@@ -51,11 +55,26 @@ class FacilitateController extends Controller
             'request_username'=>$request->request_username,
             'request_goods'=>$request->request_goods,
             'request_desc'=>$request->request_desc,
-            'created_at'=>$request->created_at,
-            'updated_at'=>$request->updated_at,
         ];
-        tb_request::create($data);
-        return redirect('facilitate.facilitate')->with('success','Berhasil menambahkan data');
+
+        $data2 = [
+            'sell_username'=>$request->sell_username,
+            'sell_goods'=>$request->sell_goods,
+            'sell_stock'=>$request->sell_stock,
+            'sell_price'=>$request->sell_price,
+            'sell_desc'=>$request->sell_desc,
+        ];
+
+        $datas = [$request->submit2];
+        
+        if($datas == false){
+            tb_request::create($data);
+        }
+        if($datas == true){
+            tb_sell::create($data2);
+        }
+        
+        return redirect('facilitate')->with('success','Berhasil menambahkan data');
     }
 
 }
