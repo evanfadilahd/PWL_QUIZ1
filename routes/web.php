@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\FacilitateController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LocationController;
+use App\Http\Controllers\SesiController;
 use App\Http\Controllers\TransactionController;
 
 /*
@@ -16,10 +17,18 @@ use App\Http\Controllers\TransactionController;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
-Route::resource('', HomeController::class);
+// Route::resource('', SesiController::class);
+
 Route::resource('facilitate', FacilitateController::class);
 Route::resource('home', HomeController::class);
 Route::resource('location', LocationController::class);
+
 Route::get('butchery-detail', [LocationController::class, 'butchery']);
 Route::get('land-detail', [LocationController::class, 'land']);
+
 Route::resource('transaction', TransactionController::class);
+
+Route::get('', [SesiController::class, 'index']);
+Route::post('login', [SesiController::class, 'login']);
+Route::resource('success', HomeController::class);
+
