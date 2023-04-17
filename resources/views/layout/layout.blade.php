@@ -43,12 +43,18 @@
         <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
 
         <link href="assets/css/style.css" rel="stylesheet">
+
+        <style>
+        .hero {
+            background-image: url("assets/img/hero-bg.jpg");
+          }
+        </style>
         
     </head>
 
     <body class="antialiased" style="color: #444444;">
         
-        <section style="background-image: url("assets\img\hero-bg.jpg")">
+        <section>
         <header class="container-fluid p-3 " style="height:240px;" id="header" class="fixed-top">
             <div class="container d-flex align-items-center justify-content-between">
             <div class="navbar navbar-expand-lg navbar-primary shadow-lg fixed-top">
