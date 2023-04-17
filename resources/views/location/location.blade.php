@@ -13,7 +13,7 @@
                         <div class="card-body">
                             <h5 class="card-title">Butchery</h5>
                             <p class="card-text">Find the nearest slaughterhouse or contact the landlord directly to rent.</p>
-                            <a href="/butchery-detail" class="btn btn-primary">See More</a>
+                            <a href="butchery-detail" class="btn btn-primary">See More</a>
                         </div>
                     </div>
                 </div>
@@ -29,7 +29,7 @@
                         <div class="card-body">
                             <h5 class="card-title">Livestock Land</h5>
                             <p class="card-text">Find the nearest farm to rent or contact the owner directly to rent.</p>
-                            <a href="/land-detail" class="btn btn-primary">See More</a>
+                            <a href="land-detail" class="btn btn-primary">See More</a>
 
                         </div>
                     </div>

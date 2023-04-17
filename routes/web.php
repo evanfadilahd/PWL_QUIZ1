@@ -20,4 +20,6 @@ Route::resource('', HomeController::class);
 Route::resource('facilitate', FacilitateController::class);
 Route::resource('home', HomeController::class);
 Route::resource('location', LocationController::class);
+Route::get('butchery-detail', [LocationController::class, 'butchery']);
+Route::get('land-detail', [LocationController::class, 'land']);
 Route::resource('transaction', TransactionController::class);
