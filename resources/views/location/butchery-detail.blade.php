@@ -17,12 +17,10 @@
                 <table class="table table-hover">
                     <thead class="table-dark">
                         <tr>
-                            <th class="col-md-1">Location</th>
-                            <th class="col-md-2">Owner</th>
-                            <th class="col-md-2">Contact</th>
-                            <th class="col-md-2">Action</th>
-                            {{-- <th class="col-md-2">create_at</th>
-                            <th class="col-md-1">updated_at</th> --}}
+                            <th>Location</th>
+                            <th>Owner</th>
+                            <th>Contact</th>
+                            <th>Action</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -32,7 +30,6 @@
                             <td> {{ $item->owner }} </td>
                             <td> {{ $item->contact }} </td>
                             <td><a href="butchery-detail" class="btn btn-primary">See More</a></td>
-                            <td> {{ $item->request_desc }} </td>
 
                         </tr>
                         @endforeach
