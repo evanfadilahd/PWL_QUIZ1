@@ -22,8 +22,13 @@ use App\Http\Controllers\TransactionController;
 Route::resource('facilitate', FacilitateController::class);
 Route::resource('home', HomeController::class);
 Route::resource('location', LocationController::class);
+
+Route::get('butchery-detail', [LocationController::class, 'butchery']);
+Route::get('land-detail', [LocationController::class, 'land']);
+
 Route::resource('transaction', TransactionController::class);
 
 Route::get('', [SesiController::class, 'index']);
 Route::post('login', [SesiController::class, 'login']);
 Route::resource('success', HomeController::class);
+
