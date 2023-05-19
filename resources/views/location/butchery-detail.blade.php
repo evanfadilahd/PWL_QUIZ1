@@ -29,7 +29,7 @@
                             <td> {{ $item->address }} </td>
                             <td> {{ $item->owner }} </td>
                             <td> {{ $item->contact }} </td>
-                            <td><a href="butchery-detail" class="btn btn-primary">See More</a></td>
+                            <td><a href="{{ $item->maps }}" class="btn btn-primary">See Live Location</a></td>
 
                         </tr>
                         @endforeach
