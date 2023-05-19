@@ -30,12 +30,19 @@
                             <h5 class="card-title">Livestock Land</h5>
                             <p class="card-text">Find the nearest farm to rent or contact the owner directly to rent.</p>
                             <a href="land-detail" class="btn btn-primary">See More</a>
+<<<<<<< HEAD
+=======
 
+>>>>>>> 38dde993f260f205cf14f0ef8e38be8ad0485bfb
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+<<<<<<< HEAD
+        <div style="height:160px;"></div>
+=======
+>>>>>>> 38dde993f260f205cf14f0ef8e38be8ad0485bfb
     </div>
 </div>
 
