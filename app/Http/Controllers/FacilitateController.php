@@ -51,26 +51,26 @@ class FacilitateController extends Controller
         //     'qty.required'=>'qty wajib diisi',
         //     'qty.numeric'=>'qty wajib dalam angka',
         // ]);
-        $data = [
-            'request_username'=>$request->request_username,
-            'request_goods'=>$request->request_goods,
-            'request_desc'=>$request->request_desc,
-        ];
-
-        $data2 = [
-            'sell_username'=>$request->sell_username,
-            'sell_goods'=>$request->sell_goods,
-            'sell_stock'=>$request->sell_stock,
-            'sell_price'=>$request->sell_price,
-            'sell_desc'=>$request->sell_desc,
-        ];
 
         $datas = [$request->submit2];
         
-        if($datas == false){
+        if($datas == null){
+            $data = [
+                'request_username'=>$request->request_username,
+                'request_goods'=>$request->request_goods,
+                'request_desc'=>$request->request_desc,
+            ];
+    
             tb_request::create($data);
         }
-        if($datas == true){
+        if($datas != null){
+            $data2 = [
+                'sell_username'=>$request->sell_username,
+                'sell_goods'=>$request->sell_goods,
+                'sell_stock'=>$request->sell_stock,
+                'sell_price'=>$request->sell_price,
+                'sell_desc'=>$request->sell_desc,
+            ];
             tb_sell::create($data2);
         }
         
