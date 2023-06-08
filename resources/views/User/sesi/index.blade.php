@@ -18,5 +18,11 @@
             </div>
         </form>
     </div>
+
+    <div style="text-align: center">
+        <a>or</a>
+        <a href="{{ route('register') }}">Register</a>
+    </div>
+
     
 @endsection

@@ -23,7 +23,10 @@ class TransactionController extends Controller
 
     public function detail(tb_productfarms $productfarm)
     {
-        return view('frontend.detail', compact('productfarm'));
+        $ratings = $productfarm->ratings()->get();
+        $averageRating = $ratings->isNotEmpty() ? $ratings->avg('rating') : null;
+
+        return view('frontend.detail', compact('productfarm', 'ratings', 'averageRating'));
     }
 
 }

@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\FacilitateController;
 use App\Http\Controllers\HomeController;
@@ -23,25 +24,60 @@ use App\Http\Controllers\Admin\DashboardController;
 */
 // Route::resource('', SesiController::class);
 
+
+
 // LOGIN
-Route::get('', [SesiController::class, 'index']);
+Route::get('transaction', [\App\Http\Controllers\TransactionController::class, 'index'])->name('transaction');
+Route::get('transaction/contact', [\App\Http\Controllers\TransactionController::class, 'contact'])->name('contact');
+Route::get('transaction/detail/{productfarm:id}', [\App\Http\Controllers\TransactionController::class, 'detail'])->name('transaction.detail');
+Route::get('a', [SesiController::class, 'index'])->name('login');
 Route::post('login', [SesiController::class, 'login']);
 Route::resource('success', HomeController::class);
 
 // REGISTER
-Route::get('reg', [SesiController::class, 'register']);
+Route::get('reg', [SesiController::class, 'register'])->name('register');
 Route::post('createaccount', [SesiController::class, 'create']);
 
-// Forntend
-Route::get('transaction', [\App\Http\Controllers\TransactionController::class, 'index'])->name('transaction');
-Route::get('transaction/contact', [\App\Http\Controllers\TransactionController::class, 'contact'])->name('contact');
-Route::get('transaction/detail/{productfarm:id}', [\App\Http\Controllers\TransactionController::class, 'detail'])->name('transaction.detail');
+Auth::routes();
 
 
-// ADMIN ROUTE
-Route::get('/admin/dasboard', [\App\Http\Controllers\Admin\DashboardController::class, 'index'])->name('admin.dashboard.index');
-Route::resource('admin/productfarm', \App\Http\Controllers\Admin\ProductFarmController::class);
-Route::put('admin/productfarm/update-image/{id}', [\App\Http\Controllers\Admin\ProductFarmController::class, 'updateImage'])->name('admin.productfarm.updateImage');
+/*------------------------------------------
+--------------------------------------------
+All Buyers Routes List
+--------------------------------------------
+--------------------------------------------*/
+
+Route::middleware(['auth', 'user-access:buyers'])->group(function () {
+  
+    Route::get('/home', [HomeController::class, 'index'])->name('home');
+});
+
+/*------------------------------------------
+--------------------------------------------
+All Seller Routes List
+--------------------------------------------
+--------------------------------------------*/
+Route::middleware(['auth', 'user-access:seller'])->group(function () {
+  
+    // Forntend
+    // Route::get('transaction', [\App\Http\Controllers\TransactionController::class, 'index'])->name('transaction');
+    // Route::get('transaction/contact', [\App\Http\Controllers\TransactionController::class, 'contact'])->name('contact');
+    // Route::get('transaction/detail/{productfarm:id}', [\App\Http\Controllers\TransactionController::class, 'detail'])->name('transaction.detail');
+});
+  
+/*------------------------------------------
+--------------------------------------------
+All Admin Routes List
+--------------------------------------------
+--------------------------------------------*/
+Route::middleware(['auth', 'user-access:admin'])->group(function () {
+  
+    // ADMIN ROUTE
+    Route::get('/admin/dasboard', [\App\Http\Controllers\Admin\DashboardController::class, 'index'])->name('admin.dashboard.index');
+    Route::resource('admin/productfarm', \App\Http\Controllers\Admin\ProductFarmController::class);
+    Route::put('admin/productfarm/update-image/{id}', [\App\Http\Controllers\Admin\ProductFarmController::class, 'updateImage'])->name('admin.productfarm.updateImage');
+});
+
 
 // MIDDLEWERI
 // Route::group(['middleware' => 'is_admin', 'prefix' => 'admin', 'as' => 'admin.'], function(){
@@ -73,3 +109,10 @@ Route::post('/reviews', [ReviewController::class, 'store'])->name('reviews.store
 use App\Http\Controllers\RecommendationController;
 
 Route::get('/rec', [RecommendationController::class, 'index'])->name('recommendations.index');
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

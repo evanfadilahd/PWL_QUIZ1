@@ -11,4 +11,9 @@ class tb_productfarms extends Model
 
     protected $guarded = ['id', 'created_at', 'update_at'];
 
+    public function ratings()
+    {
+        return $this->hasMany(Rating::class, 'item_id', 'id');
+    }
+
 }

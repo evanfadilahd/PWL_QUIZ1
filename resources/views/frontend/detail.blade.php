@@ -132,6 +132,22 @@
                     ></a>
                   </div>
                 </div>
+
+                {{-- Rating --}}
+                <div class="average-rating">
+                  @if ($averageRating !== null)
+                      @for ($i = 1; $i <= 5; $i++)
+                          @if ($i <= $averageRating)
+                              <span class="star filled"></span>
+                          @else
+                              <span class="star"></span>
+                          @endif
+                      @endfor
+                  @else
+                      No ratings available.
+                  @endif
+              </div>
+
               </div>
             </div>
           </div>
