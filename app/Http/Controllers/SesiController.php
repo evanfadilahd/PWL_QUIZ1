@@ -34,7 +34,7 @@ class SesiController extends Controller
         if (Auth::attempt($infologin)) {
             return redirect('home')->with('success', 'Berhasil login');
         } else {
-            return redirect('success')->withErrors('Username dan password yang dimasukkan tidak sesuai');
+            return redirect('/user/sesi/index')->withErrors('Username dan password yang dimasukkan tidak sesuai');
         }
     }
 
@@ -43,9 +43,9 @@ class SesiController extends Controller
     return view('User/sesi/register');
     }
 
-    function create(Request $request)
+    function create(Request $r)
     {
-    $request->validate([
+    $r->validate([
         'name' => 'required',
         'email' => 'required|email|unique:users',
         'password' => 'required|min:8'
@@ -57,8 +57,13 @@ class SesiController extends Controller
         'password.required' => 'Password wajib diisi',
         'password.min' => 'Minumum password 8 karakter'
     ]);
-    User::create($data->all());
-    return redirect('sesi');
+    User::create([
+        'name' => $r->name,
+        'email' => $r->email,
+        'password' => encrypt($r->password),
+        
+    ]);
+    return view('home');
     }
 
 }

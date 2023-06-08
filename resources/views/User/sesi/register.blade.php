@@ -3,7 +3,7 @@
 @section('content')
 <div class="w-50 center border rounded px-3 py-3 mx-auto">
         <h1>Register</h1>
-        <form action="/sesi/register" method="post">
+        <form action="/createaccount" method="post">
             @csrf
             <div class="mb-3">
                 <label for="email" class="form-label">Name</label>

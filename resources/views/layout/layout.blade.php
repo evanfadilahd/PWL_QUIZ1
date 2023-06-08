@@ -3,9 +3,9 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Farm System Information</title>
         <link rel="stylesheet" type="text/css" href="public/style.css">
         <link href="https://fonts.googleapis.com/css2?family=Quicksand&display=swap" rel="stylesheet">
-        <title>Farm System Information</title>
 
         <link rel="stylesheet" type="text/css" href="/css/style.css">
         <script type="text/javascript" src="/js/app.js"></script>
@@ -44,11 +44,44 @@
 
         <link href="assets/css/style.css" rel="stylesheet">
 
+        {{-- Star --}}
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+
+        {{-- Recommendation --}}
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/css/bootstrap.min.css">
+
         <style>
         .hero {
             background-image: url("assets/img/hero-bg.jpg");
           }
+        .rating-stars i {
+            cursor: pointer;
+        }
+        .rating-stars i:hover,
+        .rating-stars i.active,
+        .rating-stars i.active ~ i {
+            color: orange;
+        }
         </style>
+
+        <script>
+            function handleRatingClick(rating) {
+                const stars = document.querySelectorAll('.rating-stars i');
+                stars.forEach((star, index) => {
+                    if (index < rating) {
+                        star.classList.add('active');
+                    } else {
+                        star.classList.remove('active');
+                    }
+                });
+                document.getElementById('rating').value = rating;
+            }
+        </script>
+
+<style>
+    
+</style>
         
     </head>
 
@@ -89,7 +122,7 @@
                             <div class="col">
                                 <a href='{{ url('facilitate') }}' class="nav-link">
                                     <svg class="bi me-2" width="32" height="16"><use xlink:href="#cart"></use></svg>
-                                    Facilitate
+                                    Billboard
                                 </a><hr>
                             </div>
                         </div>
@@ -101,7 +134,6 @@
         </div>
 
         <section>
-            
             @yield('isi')
         </section>
 
