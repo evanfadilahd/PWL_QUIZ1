@@ -35,21 +35,19 @@ Route::post('createaccount', [SesiController::class, 'create']);
 
 Auth::routes();
 
-
-
-
-// Forntend Costumer
+// Forntend Costumer Liat Product
 Route::get('transaction', [\App\Http\Controllers\TransactionController::class, 'index'])->name('transaction');
 Route::get('transaction/contact', [\App\Http\Controllers\TransactionController::class, 'contact'])->name('contact');
 Route::get('transaction/detail/{productfarm:id}', [\App\Http\Controllers\TransactionController::class, 'detail'])->name('transaction.detail');
 
-// Frontend Supplier
+// Frontend Supplier Add
 Route::get('suppliers', [\App\Http\Controllers\SupplierController::class, 'index'])->name('suppliers');
 Route::get('suppliers/jual', [\App\Http\Controllers\SupplierController::class, 'jual'])->name('jual');
 Route::get('/suppliers/jual/createAnother', function () {
     return view('frontend.suppliers.createAnother');
 });
 
+// Fronend Supplier Location
 Route::get('location', [\App\Http\Controllers\SupplierController::class, 'location'])->name('location');
 
 Route::get('/suppliers/jual/gps', function () {
@@ -103,10 +101,6 @@ Route::middleware(['auth', 'user-access:admin'])->group(function () {
 });
 
 
-// MIDDLEWERI
-// Route::group(['middleware' => 'is_admin', 'prefix' => 'admin', 'as' => 'admin.'], function(){
-// }); 
-
 // NAVIGATION
 Route::resource('facilitate', FacilitateController::class);
 Route::resource('home', HomeController::class);
@@ -142,7 +136,3 @@ Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 
-// ADMIN ROUTE
-// Route::get('admin/dasboard', [\App\Http\Controllers\Admin\DashboardController::class, 'index'])->name('admin.dashboard.index');
-// Route::resource('admin/productfarm', \App\Http\Controllers\Admin\ProductFarmController::class );
-// Route::put('admin/productfarm/update-image/{id}', [\App\Http\Controllers\Admin\ProductFarmController::class, 'updateImage'])->name('admin.productfarm.updateImage')
