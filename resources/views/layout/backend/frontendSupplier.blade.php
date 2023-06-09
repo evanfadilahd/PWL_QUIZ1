@@ -28,7 +28,7 @@
     <!-- Navigation-->
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
       <div class="container px-4 px-lg-5">
-        <a class="navbar-brand" href="{{ route('contact') }}">Start Bootstrap</a>
+        <a class="navbar-brand" href="#">Start Bootstrap</a>
         <button
           class="navbar-toggler"
           type="button"
@@ -43,15 +43,15 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav ms-auto">
             <li class="nav-item">
-              <a class="nav-link active" href="{{ route('transaction') }}">Home</a>
+              <a class="nav-link active" href="#">Home</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="{{ route('contact') }}">Contact</a>
+              <a class="nav-link" href="#">Jual Product</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Isi Data</a>
             </li>
 
-            <li class="nav-item">
-              <a class="nav-link" href="{{ route('contact') }}">Review List</a>
-            </li>
             
           </ul>
         </div>

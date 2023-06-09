@@ -118,12 +118,12 @@
                   <div class="text-center">
                     <a
                       class="btn d-flex align-items-center justify-content-center btn-primary mt-auto"
-                      href="#"
+                      href="https://wa.me/6281355538777?text=Saya%20tertarik%20untuk%20membeli%20produk%20%20sale"
                       style="column-gap: 0.4rem"
                       >Beli Product<i class="ri-whatsapp-line"></i
                     ></a>
-
-                    {{-- Simbol RATING DISINI --}}
+                      <br>
+                    {{-- SimbolRATING DISINI --}}
                     <a
                       class="btn d-flex align-items-center justify-content-center btn-primary mt-auto"
                       href="#"

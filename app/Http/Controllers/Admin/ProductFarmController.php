@@ -34,6 +34,10 @@ class ProductFarmController extends Controller
         return view('admin.productfarm.create');
     }
 
+    public function createAnother(){
+        return view('frontend.suppliers.createAnother');
+    }
+
     /**
      * Store a newly created resource in storage.
      */

@@ -7,7 +7,7 @@
         </div>
 
         <div class="card-body">
-            {{-- ROUTE --}}
+            {{-- ROUTE Action --}}
             <form action="{{ route('productfarm.store')}}" method="post" enctype="multipart/form-data" >
                 @csrf
                 {{-- INPUTING DATA --}}
