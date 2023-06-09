@@ -1,3 +1,6 @@
+@can('access-admin')
+    <!-- Display admin-specific content -->
+
 @extends('layout.backend.admin')
 
 @section('content')
@@ -327,3 +330,5 @@
     </div>    
     
 @endsection
+
+@endcan
