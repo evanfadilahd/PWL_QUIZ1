@@ -1,5 +1,6 @@
 <?php
 
+
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\FacilitateController;
@@ -7,6 +8,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LocationController;
 use App\Http\Controllers\SesiController;
 use App\Http\Controllers\TransactionController;
+use App\Http\Controllers\ChatController;
 
 use App\Http\Controllers\Admin\ProductFarmController;
 use App\Http\Controllers\Admin\DashboardController;
@@ -70,7 +72,7 @@ All Buyers Routes List
 --------------------------------------------*/
 
 Route::middleware(['auth', 'user-access:buyers'])->group(function () {
-  
+
     Route::get('/home', [HomeController::class, 'index'])->name('home');
 });
 
@@ -80,20 +82,20 @@ All Seller Routes List
 --------------------------------------------
 --------------------------------------------*/
 Route::middleware(['auth', 'user-access:seller'])->group(function () {
-  
+
     // Forntend
     // Route::get('transaction', [\App\Http\Controllers\TransactionController::class, 'index'])->name('transaction');
     // Route::get('transaction/contact', [\App\Http\Controllers\TransactionController::class, 'contact'])->name('contact');
     // Route::get('transaction/detail/{productfarm:id}', [\App\Http\Controllers\TransactionController::class, 'detail'])->name('transaction.detail');
 });
-  
+
 /*------------------------------------------
 --------------------------------------------
 All Admin Routes List
 --------------------------------------------
 --------------------------------------------*/
 Route::middleware(['auth', 'user-access:admin'])->group(function () {
-  
+
     // ADMIN ROUTE
     Route::get('/admin/dasboard', [\App\Http\Controllers\Admin\DashboardController::class, 'index'])->name('admin.dashboard.index');
     Route::resource('admin/productfarm', \App\Http\Controllers\Admin\ProductFarmController::class);
@@ -134,5 +136,11 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+// Chat Route
+Route::get('/chat', [ChatController::class, 'index'])->middleware('auth');
+Route::post('/chat', [ChatController::class, 'store'])->middleware('auth');
+Route::post('/chat/send', [ChatController::class, 'sendMessage'])->name('chat.send');
+
 
 
