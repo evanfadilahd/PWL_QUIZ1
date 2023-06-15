@@ -60,7 +60,7 @@ class LoginSeed extends Seeder
             [
                'name'=>'Ghaitza',
                'email'=>'itza@gmail.com',
-               'role'=>2, //ADMIN
+               'role'=>0, //ADMIN
                'password'=> bcrypt('123456'),
             ],
             [
@@ -72,7 +72,7 @@ class LoginSeed extends Seeder
             [
                'name'=>'Abi',
                'email'=>'abi@gmail.com',
-               'role'=>0, //BUYER
+               'role'=>2, //BUYER
                'password'=> bcrypt('123456'),
             ],
         ];

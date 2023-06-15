@@ -24,7 +24,7 @@ class SesiController extends Controller
 
     function index()
     {
-    return view('User/sesi/index');
+    return view('auth/login');
     }
     // function login(Request $request)
     // {
@@ -57,58 +57,84 @@ class SesiController extends Controller
     // }
 
     public function login(Request $request)
-    {   
-        $input = $request->all();
-      
-        $this->validate($request, [
-            'email' => 'required|email',
-            'password' => 'required',
-        ]);
-      
-        if(auth()->attempt(array('email' => $input['email'], 'password' => $input['password'])))
-        {
-            if (auth()->user()->type == 'admin') {
-                return redirect()->route('admin.dashboard.index');
-            }else if (auth()->user()->type == 'seller') {
-                return redirect()->route('transaction');
-            }else{
-                return redirect()->route('home');
+    {
+        $credentials = $request->only('email', 'password');
+
+        if (Auth::attempt($credentials)) {
+            $user = Auth::user();
+
+            if ($user->role === User::ROLE_ADMIN) {
+                return redirect()->route('admin.dashboard');
             }
-        }else{
-            return redirect()->route('login')
-                ->with('error','Email-Address And Password Are Wrong.');
+
+            if ($user->role === User::ROLE_SELLER) {
+                return redirect()->route('seller.dashboard');
+            }
+
+            if ($user->role === User::ROLE_BUYER) {
+                return redirect()->route('buyer.dashboard');
+            }
+
+            return redirect()->route('dashboard');
         }
-           
+
+        // Authentication failed
+        return back()->withErrors([
+            'email' => 'The provided credentials do not match our records.',
+        ]);
     }
+
+    // public function login(Request $request)
+    // {   
+    //     $input = $request->all();
+      
+    //     $this->validate($request, [
+    //         'email' => 'required|email',
+    //         'password' => 'required',
+    //     ]);
+      
+    //     if(auth()->attempt(array('email' => $input['email'], 'password' => $input['password'])))
+    //     {
+    //         if (auth()->user()->type == 'admin') {
+    //             return redirect()->route('admin.dashboard.index');
+    //         }else if (auth()->user()->type == 'seller') {
+    //             return redirect()->route('transaction');
+    //         }else{
+    //             return redirect()->route('home');
+    //         }
+    //     }else{
+    //         return redirect()->route('login')
+    //             ->with('error','Email-Address And Password Are Wrong.');
+    //     }
+           
+    // }
 
     function register()
     {
-    return view('User/sesi/register');
+    return view('auth/register');
     }
 
-    function create(Request $r)
+    protected function create(Request $r, array $data)
     {
-    $r->validate([
-        'name' => 'required',
-        'email' => 'required|email|unique:users',
-        'password' => 'required|min:8'
-    ], [
-        'name.required' => 'Nama wajib diisi',
-        'email.required' => 'Email wajib diisi',
-        'email.email' => 'Email yang dimasukkan tidak valid',
-        'email.unique' => 'Email sudah digunakan, silakan masukkan email yang lain',
-        'password.required' => 'Password wajib diisi',
-        'password.min' => 'Minumum password 8 karakter'
-    ]);
+        $r->validate([
+            'name' => 'required',
+            'email' => 'required|email|unique:users',
+            'password' => 'required|min:8'
+        ], [
+            'name.required' => 'Nama wajib diisi',
+            'email.required' => 'Email wajib diisi',
+            'email.email' => 'Email yang dimasukkan tidak valid',
+            'email.unique' => 'Email sudah digunakan, silakan masukkan email yang lain',
+            'password.required' => 'Password wajib diisi',
+            'password.min' => 'Minumum password 8 karakter'
+        ]);
 
-    User::create([
-        'name' => $r->name,
-        'email' => $r->email,
-        'password' => encrypt($r->password),
-        'role' => $r->role,
-        
-    ]);
-    return view('home');
+        return User::create([
+            'name' => $data['name'],
+            'email' => $data['email'],
+            'password' => Hash::make($data['password']),
+            'role' => $data['role'],
+        ]);
     }
 
 }
