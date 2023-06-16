@@ -194,6 +194,7 @@ Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
 // Chat Route
 Route::get('/chat', [ChatController::class, 'index'])->middleware('auth');
 Route::post('/chat', [ChatController::class, 'store'])->middleware('auth');
