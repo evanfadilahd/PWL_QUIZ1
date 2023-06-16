@@ -67,12 +67,12 @@ class SesiController extends Controller
       
         if(auth()->attempt(array('email' => $input['email'], 'password' => $input['password'])))
         {
-            if (auth()->user()->type == 'admin') {
+            if (auth()->user()->type == '2') {
                 return redirect()->route('admin.dashboard.index');
-            }else if (auth()->user()->type == 'seller') {
-                return redirect()->route('transaction');
-            }else{
-                return redirect()->route('home');
+            }else if (auth()->user()->type == '1') {
+                return redirect()->route('transaction.index');
+            }else if (auth()->user()->type == '0'){
+                return redirect()->route('suppliers.index');
             }
         }else{
             return redirect()->route('login')

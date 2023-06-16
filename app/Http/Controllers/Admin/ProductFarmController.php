@@ -59,6 +59,25 @@ class ProductFarmController extends Controller
         ]);
     }
 
+    // Store Suppiler
+    public function storeAnother(ProductFarmStoreRequest $request)
+    {
+        if ($request->validated()){
+            $gambar_produk = $request->file('gambar_produk')->store('gambar/productfarm', 'public');
+
+            //Kurang tau
+            $slug = Str::slug($request->nama_produk, '-');
+
+            // MASIH EROR
+            tb_productfarms::create($request->except('gambar_produk') + ['gambar_produk' => $gambar_produk, 'slug' => $slug]);
+        }
+
+        return redirect()->route('frontend.suppliers.supplier')->with([
+            'massage' => 'data sukses input',
+            'alert-type' => 'succes'
+        ]);
+    }
+
     /**
      * Display the specified resource.
      */

@@ -21,7 +21,6 @@
                             <th>Status Daging</th>
                             <th>Aksi</th>
                         </tr>
-
                     </thead>
 
                     <tbody>

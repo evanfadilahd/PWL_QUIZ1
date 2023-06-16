@@ -39,9 +39,8 @@ class LoginController extends Controller
         $this->middleware('guest')->except('logout');
     }
 
-    public function login(Request $request)
-    {   
-        $input = $request->all();
+    public function login(Request $request) {
+    $input = $request->all();
       
         $this->validate($request, [
             'email' => 'required|email',
@@ -50,17 +49,16 @@ class LoginController extends Controller
       
         if(auth()->attempt(array('email' => $input['email'], 'password' => $input['password'])))
         {
-            if (auth()->user()->role == 'admin') {
+            if (auth()->user()->role == 2) {
                 return redirect()->route('admin.dashboard.index');
-            }else if (auth()->user()->role == 'seller') {
-                return redirect()->route('transaction');
-            }else{
+            }else if (auth()->user()->role == 0) {
+                return redirect()->route('transaction.index');
+            }else if (auth()->user()->role == 1){
                 return redirect()->route('home');
             }
         }else{
             return redirect()->route('login')
                 ->with('error','Email-Address And Password Are Wrong.');
         }
-           
     }
 }

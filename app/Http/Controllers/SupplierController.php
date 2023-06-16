@@ -36,7 +36,7 @@ class SupplierController extends Controller
      */
     public function create()
     {
-        //
+        return view('suppliers.create');
     }
 
     /**
@@ -44,6 +44,10 @@ class SupplierController extends Controller
      */
     public function store(Request $request)
     {
+        $location = tb_supplier_location::create($request->all());
+
+        return redirect()->route('suppliers.index');
+
         // $location = tb_supplier_location::latest()->get();
 
         // $location -> latlong            =  $request -> latlong;
