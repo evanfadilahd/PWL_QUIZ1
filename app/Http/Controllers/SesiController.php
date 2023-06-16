@@ -58,6 +58,7 @@ class SesiController extends Controller
 
     public function login(Request $request)
     {   
+        
         $input = $request->all();
       
         $this->validate($request, [
@@ -73,7 +74,8 @@ class SesiController extends Controller
                 return redirect()->route('transaction.index');
             }else if (auth()->user()->type == '0'){
                 return redirect()->route('suppliers.index');
-        {
+            }
+        }
         $credentials = $request->only('email', 'password');
 
         if (Auth::attempt($credentials)) {
@@ -92,8 +94,8 @@ class SesiController extends Controller
             }
 
             return redirect()->route('dashboard');
-            }
-         }
+            
+        }
 
         // Authentication failed
         return back()->withErrors([
