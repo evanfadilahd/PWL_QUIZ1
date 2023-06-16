@@ -101,6 +101,7 @@ Route::middleware(['auth', 'user-access:buyers'])->group(function () {
     Route::get('transaction', [\App\Http\Controllers\TransactionController::class, 'index'])->name('transaction');
     Route::get('transaction/contact', [\App\Http\Controllers\TransactionController::class, 'contact'])->name('contact');
     Route::get('transaction/detail/{productfarm:id}', [\App\Http\Controllers\TransactionController::class, 'detail'])->name('transaction.detail');
+});
 // Route::middleware(['auth', 'user-access:buyers'])->group(function () {
 // });
 
@@ -187,21 +188,13 @@ Route::post('/reviews', [ReviewController::class, 'store'])->name('reviews.store
 
 // RECOMMENDATION
 
-use App\Http\Controllers\RecommendationController;
-
+// use App\Http\Controllers\RecommendationController;
 Route::get('/rec', [RecommendationController::class, 'index'])->name('recommendations.index');
 Auth::routes();
-
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
 Auth::routes();
-
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
 // Chat Route
 Route::get('/chat', [ChatController::class, 'index'])->middleware('auth');
 Route::post('/chat', [ChatController::class, 'store'])->middleware('auth');
 Route::post('/chat/send', [ChatController::class, 'sendMessage'])->name('chat.send');
-
-
-
