@@ -54,12 +54,17 @@ class User extends Authenticatable
     //     return $this->roles()->where('name', $role)->exists();
     // }
 
-    protected function role(): Attribute
-    {
-        return new Attribute(
-            get: fn ($value) =>  ["buyer", "seller", "admin"][$value],
-        );
-    }
+    // protected function role(): Attribute
+    // {
+    //     return new Attribute(
+    //         get: fn ($value) =>  ["admin", "seller", "buyer"][$value],
+    //     );
+    // }
+
+    const ROLE_ADMIN = 0;
+    const ROLE_SELLER = 1;
+    const ROLE_BUYER = 2;
+    
 
     public function ratings()
     {

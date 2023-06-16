@@ -1,0 +1,40 @@
+/* CSS untuk container chat */
+.chat-container {
+    width: 400px;
+    height: 500px;
+    border: 1px solid #ccc;
+    overflow-y: scroll;
+  }
+
+  /* CSS untuk pesan dalam chat */
+  .message {
+    margin-bottom: 10px;
+    padding: 5px;
+  }
+
+  /* CSS untuk pesan dari pengguna */
+  .user-message {
+    background-color: #f0f0f0;
+  }
+
+  /* CSS untuk pesan dari sistem/bot */
+  .bot-message {
+    background-color: #e1f5fe;
+  }
+
+  /* CSS untuk input form chat */
+  .chat-input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+  }
+
+  /* CSS untuk tombol kirim */
+  .send-button {
+    margin-top: 10px;
+    padding: 8px 16px;
+    background-color: #4caf50;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+  }

@@ -27,7 +27,7 @@ class UserAccess
         // }
 
         // return $next($request);
-        if(auth()->user()->type == $role){
+        if(auth()->user()->role == $role){
             return $next($request);
         }
            
